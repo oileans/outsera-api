@@ -29,7 +29,7 @@ Os testes são executados contra a API pública https://jsonplaceholder.typicode
 ### 1.Clonar o projeto
 
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
+
 
 ### 2.Executar projeto
 mvn clean test
