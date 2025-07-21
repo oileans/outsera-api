@@ -26,10 +26,17 @@ Os testes são executados contra a API pública https://jsonplaceholder.typicode
 
 ## Como executar os testes
 
-### 1.Clonar o projeto
+### 1. Clonar o projeto
 
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+* git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
 
-### 2.Executar projeto
-mvn clean test
+### 2. Executar projeto
+
+* mvn clean test
+
+### 3. Gerar alure report
+
+* Instalar o [Allure](https://github.com/allure-framework/allure2/releases) CLI
+* run 'Allure serve allure-results'
+
