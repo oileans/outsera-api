@@ -28,7 +28,7 @@ Os testes são executados contra a API pública https://jsonplaceholder.typicode
 
 ### 1. Clonar o projeto
 
-* git clone https://github.com/seu-usuario/nome-do-repositorio.git
+* git clone git@github.com:oileans/outsera-api.git
 
 
 ### 2. Executar projeto
