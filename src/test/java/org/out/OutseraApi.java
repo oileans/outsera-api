@@ -1,4 +1,4 @@
-package org.example;
+package org.out;
 
 import io.qameta.allure.*;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -32,7 +32,7 @@ public class OutseraApi {
      * validando o status HTTP, tipo de conteúdo, headers e valores do corpo.
      */
     @Test
-    @Story("Get single post")
+    @Story("POST by ID")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Verifica o Post com ID 1")
     public void testGetComId() {
@@ -52,6 +52,9 @@ public class OutseraApi {
      */
 
     @Test
+    @Story("Get")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("GET")
     public void testGet() {
         given()
                 .when()
@@ -69,6 +72,9 @@ public class OutseraApi {
      * Verifica se o retorno possui uma quantidade mínima de elementos (> 0) e responde com sucesso (200 OK).
      */
     @Test
+    @Story("Get all")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("GET ALL")
     public void testGetTodos() {
         given()
                 .when()
@@ -82,7 +88,11 @@ public class OutseraApi {
      * Testa a criação de um novo post com dados válidos usando o metodo HTTP POST.
      */
     @Test
+    @Story("Post")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("POST")
     public void testPost() {
+
         String requestBody = """
                     {
                       "title": "Willians",
@@ -104,9 +114,58 @@ public class OutseraApi {
     }
 
     /**
+     * Testa a exclusão de registro com dados válidos usando o metodo HTTP DELETE.
+     */
+    @Test
+    @Story("Delete")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("DELETE")
+    public void testDelete() {
+
+        int postId = 1;
+        // Valida que o post existe antes do DELETE
+        given()
+                .when()
+                .get("/posts/" + postId)
+                .then()
+                .statusCode(200);
+
+        // Executa o DELETE
+        given()
+                .when()
+                .delete("/posts/" + postId)
+                .then()
+                .statusCode(200);
+
+        // Tenta buscar novamente o recurso
+        // Em JSONPlaceholder ele ainda existe, mas em API real seria 404
+        given()
+                .when()
+                .get("/posts/" + postId)
+                .then()
+                .statusCode(404);
+    }
+
+    @Test
+    @Story("Delete")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("DELETE (SEM PARAMETROS) - Negativo")
+    public void testDeleteSemParametros() {
+        given()
+                .when()
+                .delete("/posts/")
+                .then()
+                .statusCode(404); //
+    }
+
+
+    /**
      * Testa a atualização (total) de um post existente (ID = 1) utilizando o metodo HTTP PUT.
      */
     @Test
+    @Story("Put")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("PUT")
     public void testPut() {
         String updatedBody = """
                     {
