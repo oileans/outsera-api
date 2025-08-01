@@ -32,16 +32,20 @@ jobs:
       - name: Instalar dependências e rodar testes
         run: mvn clean test -Dmaven.test.failure.ignore=true --batch-mode
 
-      - name: Gerar relatório Allure
-        if: always()
-        run:
-          mvn allure:report
+      - name: Instalar Allure CLI
+        run: |
+          wget https://github.com/allure-framework/allure2/releases/download/2.24.1/allure-2.24.1.tgz
+          tar -xvzf allure-2.24.1.tgz
+          sudo mv allure-2.24.1 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
-      - name: Publicar Allure Report no GitHub Pages
-        if: always()
+      - name: Gerar relatório Allure
+        run: |
+          allure generate target/allure-results --clean -o target/allure-report
+
+      - name: Publicar no GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/site/allure-maven-plugin
+          publish_dir: allure-report
           publish_branch: gh-pages
-          force_orphan: true
