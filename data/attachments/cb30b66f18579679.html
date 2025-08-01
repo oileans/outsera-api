@@ -1,0 +1,29 @@
+<div>POST to https://jsonplaceholder.typicode.com/posts</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    {
+    &quot;title&quot;: &quot;Alone on a Wide, Wide Sea&quot;,
+    &quot;body&quot;: &quot;Et ullam dolorem. Fuga aut neque quam ut veritatis voluptatibus. Voluptatem doloribus iste eius.&quot;,
+    &quot;userId&quot;: 578
+}
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;https://jsonplaceholder.typicode.com/posts&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;title&quot;: &quot;Alone on a Wide, Wide Sea&quot;,
+    &quot;body&quot;: &quot;Et ullam dolorem. Fuga aut neque quam ut veritatis voluptatibus. Voluptatem doloribus iste eius.&quot;,
+    &quot;userId&quot;: 578
+}&#39;
+</div>
