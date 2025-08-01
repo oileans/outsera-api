@@ -12,14 +12,14 @@ Os testes são executados contra a API pública https://jsonplaceholder.typicode
 
 ## Tecnologias e Bibliotecas
 
-| Ferramenta        | Finalidade                          |
-|-------------------|--------------------------------------|
-| Java 17+          | Linguagem base                       |
-| Maven             | Gerenciamento de dependências        |
-| JUnit 5           | Framework de testes                  |
-| Rest Assured      | Testes de API REST                   |
-| Hamcrest          | Validações e matchers                |
-| Allure Report     | Relatórios gráficos de execução      |
+| Ferramenta    | Finalidade                          |
+|---------------|--------------------------------------|
+| Java 11+      | Linguagem base                       |
+| Maven         | Gerenciamento de dependências        |
+| JUnit 5       | Framework de testes                  |
+| Rest Assured  | Testes de API REST                   |
+| Hamcrest      | Validações e matchers                |
+| Allure Report | Relatórios gráficos de execução      |
 
 
 ---
