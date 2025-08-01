@@ -30,13 +30,12 @@ Os testes são executados contra a API pública https://jsonplaceholder.typicode
 
 * git clone git@github.com:oileans/outsera-api.git
 
-
 ### 2. Executar projeto
 
-* mvn clean test
+* mvn test -Denv=prod
 
 ### 3. Gerar alure report
 
 * Instalar o [Allure](https://github.com/allure-framework/allure2/releases) CLI
-* run 'Allure serve allure-results'
+* run 'Allure serve allure-results' (Necessario passar o caminho absudo da pasta allure-results)
 
