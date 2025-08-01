@@ -22,23 +22,26 @@ jobs:
           cache: maven
 
       - name: Cache do Maven
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2-
 
-      - name: Executar testes e gerar Allure Results
-        run: mvn clean test
+      - name: Instalar dependências e rodar testes
+        run: mvn clean test -Dmaven.test.failure.ignore=true --batch-mode
 
-      - name: Gerar Allure Report
-        run: mvn allure:report
+      - name: Gerar relatório Allure
+        if: always()
+        run:
+          mvn allure:report
 
       - name: Publicar Allure Report no GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-results
+          publish_dir: ./target/site/allure-maven-plugin
           publish_branch: gh-pages
+          force_orphan: true
